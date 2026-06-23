@@ -120,6 +120,18 @@ type Provider struct {
 	expectedCorpID string // Corporate ID to validate against for company-specific authentication
 }
 
+type Config struct {
+	ClientKey      string
+	Secret         string
+	CallbackURL    string
+	ExpectedCorpID string
+	Scopes         []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientKey, c.Secret, c.CallbackURL, c.ExpectedCorpID, c.Scopes...)
+}
+
 // Name is the name used to retrieve this provider later.
 func (p *Provider) Name() string {
 	return p.providerName

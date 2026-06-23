@@ -35,6 +35,17 @@ type Provider struct {
 	ProfileURL string
 }
 
+type Config struct {
+	ClientID     string
+	ClientSecret string
+	RedirectURL  string
+	Lang         WechatLangType
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientID, c.ClientSecret, c.RedirectURL, c.Lang)
+}
+
 type WechatLangType string
 
 const (

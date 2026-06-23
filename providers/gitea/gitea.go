@@ -41,6 +41,17 @@ type Provider struct {
 	profileURL   string
 }
 
+type Config struct {
+	ClientKey   string
+	Secret      string
+	CallbackURL string
+	Scopes      []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientKey, c.Secret, c.CallbackURL, c.Scopes...)
+}
+
 // New creates a new Gitea provider and sets up important connection details.
 // You should always call `gitea.New` to get a new provider.  Never try to
 // create one manually.

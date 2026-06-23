@@ -30,6 +30,17 @@ type Provider struct {
 	providerName string
 }
 
+type Config struct {
+	ClientKey   string
+	Secret      string
+	CallbackURL string
+	Scopes      []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientKey, c.Secret, c.CallbackURL, c.Scopes...)
+}
+
 type profileResp struct {
 	FirstName string `json:"first_name"`
 	LastName  string `json:"last_name"`

@@ -48,6 +48,17 @@ type Provider struct {
 	providerName string
 }
 
+type Config struct {
+	ClientKey   string
+	Secret      string
+	CallbackURL string
+	Scopes      []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientKey, c.Secret, c.CallbackURL, c.Scopes...)
+}
+
 // New creates a new Hubspot provider and sets up important connection details.
 // You should always call `hubspot.New` to get a new provider.  Never try to
 // create one manually.

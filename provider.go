@@ -9,6 +9,10 @@ import (
 	"golang.org/x/oauth2"
 )
 
+type ProviderConfig interface {
+	Build() Provider
+}
+
 // Provider needs to be implemented for each 3rd party authentication provider
 // e.g. Facebook, Twitter, etc...
 type Provider interface {

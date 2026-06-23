@@ -28,6 +28,18 @@ type Provider struct {
 	providerName string
 }
 
+type Config struct {
+	UaaURL      string
+	ClientKey   string
+	Secret      string
+	CallbackURL string
+	Scopes      []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.UaaURL, c.ClientKey, c.Secret, c.CallbackURL, c.Scopes...)
+}
+
 // New creates a new Cloud Foundry provider and sets up important connection details.
 // You should always call `cloudfoundry.New` to get a new provider.  Never try to
 // create one manually.

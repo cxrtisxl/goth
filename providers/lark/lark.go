@@ -41,6 +41,17 @@ type Provider struct {
 	appAccessToken *appAccessToken
 }
 
+type Config struct {
+	ClientKey   string
+	Secret      string
+	CallbackURL string
+	Scopes      []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientKey, c.Secret, c.CallbackURL, c.Scopes...)
+}
+
 // New creates a new Lark provider and sets up important connection details.
 func New(clientKey, secret, callbackURL string, scopes ...string) *Provider {
 	p := &Provider{

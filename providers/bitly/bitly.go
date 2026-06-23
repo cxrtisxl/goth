@@ -43,6 +43,17 @@ type Provider struct {
 	providerName string
 }
 
+type Config struct {
+	ClientKey   string
+	Secret      string
+	CallbackURL string
+	Scopes      []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientKey, c.Secret, c.CallbackURL, c.Scopes...)
+}
+
 // Ensure `bitly.Provider` implements `goth.Provider`.
 var _ goth.Provider = &Provider{}
 

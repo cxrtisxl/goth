@@ -31,6 +31,17 @@ type Provider struct {
 	providerName string
 }
 
+type Config struct {
+	ClientKey   string
+	Secret      string
+	CallbackURL string
+	Scopes      []string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.ClientKey, c.Secret, c.CallbackURL, c.Scopes...)
+}
+
 // Session stores data during the auth process with Dropbox.
 type Session struct {
 	AuthURL string

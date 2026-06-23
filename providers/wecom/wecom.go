@@ -49,6 +49,17 @@ type Provider struct {
 	baseURL string
 }
 
+type Config struct {
+	CorpID      string
+	Secret      string
+	AgentID     string
+	CallbackURL string
+}
+
+func (c Config) Build() *Provider {
+	return New(c.CorpID, c.Secret, c.AgentID, c.CallbackURL)
+}
+
 // Name is the name used to retrieve this provider later.
 func (p *Provider) Name() string {
 	return p.providerName
