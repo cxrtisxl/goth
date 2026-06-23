@@ -46,7 +46,11 @@ type Config struct {
 	Scopes      []string
 }
 
-func (c Config) Build() *Provider {
+func (c *Config) SetCallbackURL(url string) {
+	c.CallbackURL = url
+}
+
+func (c *Config) Build() goth.Provider {
 	return New(c.ClientID, c.Secret, c.BaseUrl, c.CallbackURL, c.Scopes...)
 }
 

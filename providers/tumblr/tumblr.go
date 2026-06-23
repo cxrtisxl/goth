@@ -61,7 +61,11 @@ type Config struct {
 	CallbackURL string
 }
 
-func (c Config) Build() *Provider {
+func (c *Config) SetCallbackURL(url string) {
+	c.CallbackURL = url
+}
+
+func (c *Config) Build() goth.Provider {
 	return New(c.ClientKey, c.Secret, c.CallbackURL)
 }
 

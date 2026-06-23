@@ -34,8 +34,13 @@ type Config struct {
 	Scopes        []string
 }
 
-func (c Config) Build() Provider {
-	return New(c.ClientID, c.ClientSecret, c.RedirectURI, c.Duration, c.TokenEndpoint, c.UserURL, c.Scopes...)
+func (c *Config) SetCallbackURL(url string) {
+	c.RedirectURI = url
+}
+
+func (c *Config) Build() goth.Provider {
+	provider := New(c.ClientID, c.ClientSecret, c.RedirectURI, c.Duration, c.TokenEndpoint, c.UserURL, c.Scopes...)
+	return &provider
 }
 
 func New(clientID string, clientSecret string, redirectURI string, duration string, tokenEndpoint string, userURL string, scopes ...string) Provider {

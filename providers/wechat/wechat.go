@@ -42,7 +42,11 @@ type Config struct {
 	Lang         WechatLangType
 }
 
-func (c Config) Build() *Provider {
+func (c *Config) SetCallbackURL(url string) {
+	c.RedirectURL = url
+}
+
+func (c *Config) Build() goth.Provider {
 	return New(c.ClientID, c.ClientSecret, c.RedirectURL, c.Lang)
 }
 

@@ -80,8 +80,16 @@ type Config struct {
 	Scopes                 []string
 }
 
-func (c Config) Build() (*Provider, error) {
-	return New(c.ClientKey, c.Secret, c.CallbackURL, c.OpenIDAutoDiscoveryURL, c.Scopes...)
+func (c *Config) SetCallbackURL(url string) {
+	c.CallbackURL = url
+}
+
+func (c *Config) Build() goth.Provider {
+	provider, err := New(c.ClientKey, c.Secret, c.CallbackURL, c.OpenIDAutoDiscoveryURL, c.Scopes...)
+	if err != nil {
+		panic(err)
+	}
+	return provider
 }
 
 type OpenIDConfig struct {
