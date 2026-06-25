@@ -42,6 +42,10 @@ type Config struct {
 	Lang         WechatLangType
 }
 
+func (c *Config) Name() string {
+	return "wechat"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.RedirectURL = url
 }

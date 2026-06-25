@@ -23,8 +23,9 @@ type Provider interface {
 }
 
 type ProviderConfig interface {
-	Build() Provider
+	Name() string
 	SetCallbackURL(string)
+	Build() Provider
 }
 
 const NoAuthUrlErrorMessage = "an AuthURL has not been set"

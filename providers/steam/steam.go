@@ -48,6 +48,10 @@ type Config struct {
 	CallbackURL string
 }
 
+func (c *Config) Name() string {
+	return "steam"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.CallbackURL = url
 }

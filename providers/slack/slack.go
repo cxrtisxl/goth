@@ -43,6 +43,10 @@ type Config struct {
 	Scopes      []string
 }
 
+func (c *Config) Name() string {
+	return "slack"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.CallbackURL = url
 }

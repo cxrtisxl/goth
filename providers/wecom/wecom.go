@@ -56,6 +56,10 @@ type Config struct {
 	CallbackURL string
 }
 
+func (c *Config) Name() string {
+	return "wecom"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.CallbackURL = url
 }

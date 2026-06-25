@@ -69,6 +69,10 @@ type Config struct {
 	CallbackURL string
 }
 
+func (c *Config) Name() string {
+	return "twitterv2"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.CallbackURL = url
 }

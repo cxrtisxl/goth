@@ -49,6 +49,10 @@ type Config struct {
 	Opts        ProviderOptions
 }
 
+func (c *Config) Name() string {
+	return "azureadv2"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.CallbackURL = url
 }

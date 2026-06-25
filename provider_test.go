@@ -42,6 +42,7 @@ func Test_ConfigProvider(t *testing.T) {
 		cfg.SetCallbackURL(callbackURL)
 		provider := cfg.Build()
 		providers = append(providers, provider)
+		a.Equal(cfg.Name(), provider.Name())
 		goth.UseProviders(provider)
 	}
 

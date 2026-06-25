@@ -99,6 +99,10 @@ type Config struct {
 	CallbackURL string
 }
 
+func (c *Config) Name() string {
+	return "xero"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.CallbackURL = url
 }

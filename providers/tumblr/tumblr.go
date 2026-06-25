@@ -61,6 +61,10 @@ type Config struct {
 	CallbackURL string
 }
 
+func (c *Config) Name() string {
+	return "tumblr"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.CallbackURL = url
 }

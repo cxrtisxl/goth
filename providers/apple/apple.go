@@ -47,6 +47,10 @@ type Config struct {
 	Scopes      []string
 }
 
+func (c *Config) Name() string {
+	return "apple"
+}
+
 func (c *Config) SetCallbackURL(url string) {
 	c.RedirectURL = url
 }
